@@ -5,6 +5,7 @@ import OpenGL.GLUT as glut
 import OpenGL.GLU as glu
 import numpy as np
 from PIL import Image
+import texto as texto
 
 largura_janela = 0
 altura_janela = 0
@@ -161,12 +162,13 @@ def display():
   desenhar_quadrado_fundo2()
   for i in range(len(faces)):
     imprimir_face(faces[i])
+  texto.afazeres()
   glut.glutSwapBuffers()
 
 
 glut.glutInit()
 glut.glutInitDisplayMode(0)
-glut.glutCreateWindow('Gustavo Rodrigues Viana')
+glut.glutCreateWindow('Crime e Castigo')
 glut.glutReshapeWindow(512, 512)
 glut.glutDisplayFunc(display)
 glut.glutReshapeFunc(resize)
