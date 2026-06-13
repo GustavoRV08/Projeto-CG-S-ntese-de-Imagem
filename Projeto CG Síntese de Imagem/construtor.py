@@ -1,4 +1,3 @@
-from OpenGL.GL import GL_STENCIL_BACK_PASS_DEPTH_FAIL
 import random
 
 class Face:
