@@ -6,91 +6,13 @@ import OpenGL.GLU as glu
 import numpy as np
 from PIL import Image
 import texto as texto
+import construtor
 
 largura_janela = 0
 altura_janela = 0
 
-class Face():
-  def __init__(self, 
-               x1, y1, 
-               x2, y2,
-               x3, y3, 
-               x4, y4,
-               textura):
-    self.coordX = []
-    self.coordY = []
-    self.coordX.append(x1)
-    self.coordX.append(x2)
-    self.coordX.append(x3)
-    self.coordX.append(x4)
-    self.coordY.append(y1)
-    self.coordY.append(y2)
-    self.coordY.append(y3)
-    self.coordY.append(y4)
-    self.textura = textura
-    self.visivel = True
-
-  def get_menorX(self):
-    return min(self.coordX)
-
-  def get_maiorX(self):
-    return max(self.coordX)
-
-  def get_menorY(self):
-    return min(self.coordY)
-
-  def get_maiorY(self):
-    return max(self.coordY)
-
-faces = []
-faces.append(Face(-0.2, 0.2,
-                 0.2, 0.2,
-                 0.2, -0.2,
-                 -0.2, -0.2,
-                 r"piso.jpg"))
-
-faces.append(Face(0.2, 0.5,
-                  0.6, 0.5,
-                  0.6, 0.3,
-                  0.2, 0.3,
-                  r"bricks.jpg"))
-
-faces.append(Face(-0.6, 0.8,
-   -0.2, 0.8,
-   -0.2, 0.4,
-   -0.6, 0.4,
-   r"piso.jpg"))
-
-faces.append(Face(-0.8, -0.2,
-   -0.4, -0.2,
-   -0.4, -0.6,
-   -0.8, -0.6,
-   r"piso.jpg"))
-
-faces.append(Face(0.4, 0,
-   0.8, 0,
-   0.8, -0.4,
-   0.4, -0.4,
-   r"piso.jpg"))
-
-
-def desenhar_quadrado_fundo():
-  gl.glBegin(gl.GL_QUADS)
-  gl.glColor3f(1, 0, 0, 1)
-  gl.glVertex3f(-1, 1, 0)
-  gl.glVertex3f(0, 1, 0)
-  gl.glVertex3f(0, -1, 0)
-  gl.glVertex3f(-1, -1, 0)
-  gl.glEnd()
-
-def desenhar_quadrado_fundo2():
-  gl.glBegin(gl.GL_QUADS)
-  gl.glColor3f(1, 0, 1, 1)
-  gl.glVertex3f(0, 1, 0)
-  gl.glVertex3f(1, 1, 0)
-  gl.glVertex3f(1, -1, 0)
-  gl.glVertex3f(0, -1, 0)
-  gl.glEnd()
+faces = construtor.pegar_lista()
+fundo = construtor.pegar_fundo()
 
 def imprimir_face(face):
   texId = ler_textura(face.textura)
@@ -153,13 +75,13 @@ def resize(largura, altura):
   global largura_janela
   altura_janela = altura
   largura_janela = largura
-  gl.glViewport(0, 0, altura, largura)
+  gl.glViewport(0, 0, largura, altura)
+  gl.glLoadIdentity()
   
 def display():
   gl.glClear(gl.GL_COLOR_BUFFER_BIT)
   gl.glShadeModel(gl.GL_FLAT)
-  desenhar_quadrado_fundo()
-  desenhar_quadrado_fundo2()
+  imprimir_face(fundo)
   for i in range(len(faces)):
     imprimir_face(faces[i])
   texto.afazeres()
@@ -169,7 +91,7 @@ def display():
 glut.glutInit()
 glut.glutInitDisplayMode(0)
 glut.glutCreateWindow('Crime e Castigo')
-glut.glutReshapeWindow(512, 512)
+glut.glutReshapeWindow(720, 540)
 glut.glutDisplayFunc(display)
 glut.glutReshapeFunc(resize)
 glut.glutMouseFunc(mouse)
