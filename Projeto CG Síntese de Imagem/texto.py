@@ -27,12 +27,6 @@ def afazeres():
 
 
 
-def proxima_tarefa():
-  global tarefa_atual
-  tarefa_atual += 1
-  if tarefa_atual >= len(tarefas):
-    tarefa_atual = 0
-
 tarefas = [
       "Já está tudo pronto, agora é só não olhar para trás",
       "Essa será minha última conversa com aquela agiota",
