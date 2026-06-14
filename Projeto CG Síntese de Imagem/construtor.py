@@ -1,7 +1,7 @@
 import random
 
 class Face:
-  def __init__(self, x1, y1, x2, y2, x3, y3, x4, y4, textura):
+  def __init__(self, x1, y1, x2, y2, x3, y3, x4, y4, textura = None):
       self.coordX = []
       self.coordY = []
       self.coordX.append(x1)
@@ -13,7 +13,6 @@ class Face:
       self.coordY.append(y3)
       self.coordY.append(y4)
       self.textura = textura
-      self.visivel = True
 
   def get_menorX(self):
       return min(self.coordX)
@@ -33,7 +32,13 @@ if numFundo == 0:
 else:
     fundo = Face(-1, 1, 1, 1, 1, -1, -1, -1, r"fundo2.jpg")
 
+porta_aberta = Face(0.49, 0.58,
+                    0.97, 0.58,
+                    0.97, -0.72,
+                    0.49, -0.72)
+
 faces = []
+faces.append(porta_aberta)
 #porta:
 if numFundo == 0:
     faces.append(Face(0.49, 0.58,
@@ -47,7 +52,7 @@ else:
          0.97, -0.72,
          0.49, -0.72,
          r"porta_trancada(vela_cadeira).jpg"))
-    
+
 
 #machados:
 match random.randrange(0, 3):
@@ -69,7 +74,7 @@ match random.randrange(0, 3):
             0.5, -0.89, 
             -0.01, -0.89, 
             r"machado3.jpg"))
-        
+
 
 #velas
 if numFundo == 0:
@@ -83,7 +88,7 @@ else:
         0.93, -0.80, 
         0.71, -0.80, 
         r"velas(cadeira).jpg"))
-    
+
 
 #Relógios:
 match random.randrange(0, 3):
@@ -105,28 +110,13 @@ match random.randrange(0, 3):
             0.07, 0, 
             -0.14, 0, 
             r"relogio3.jpg"))
-    
+
 # Casaco
 faces.append(Face(-0.82, 0.94, 
                 -0.53, 0.94, 
                 -0.53, -0.05, 
                 -0.82, -0.05, 
                 r"casaco.jpg"))
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
 
 def pegar_lista():
     global faces
@@ -135,3 +125,7 @@ def pegar_lista():
 def pegar_fundo():
     global fundo
     return fundo
+
+def pegar_porta_aberta():
+    global porta_aberta
+    return porta_aberta
