@@ -145,6 +145,7 @@ def mouse(botao, estado, x, y):
     for i in range(len(faces)):
       if faces[i].visivel:
         imprimir_face(faces[i])
+    texto.afazeres()
     glut.glutSwapBuffers()
 
 
