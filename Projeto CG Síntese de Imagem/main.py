@@ -59,11 +59,11 @@ def ler_textura(nome):
 def mouse(botao, estado, x, y):
   if botao == glut.GLUT_LEFT_BUTTON and estado == glut.GLUT_DOWN:
     for i in range(len(faces)):
-      if verificar_clique(faces[i], x, y):
+      if verificar_clique(faces[i], x, y) and i == len(texto.tarefas)-1:
         faces[i].visivel = False
+        texto.tarefas.pop()
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
-    desenhar_quadrado_fundo()
-    desenhar_quadrado_fundo2()
+    imprimir_face(fundo)
     for i in range(len(faces)):
       if faces[i].visivel:
         imprimir_face(faces[i])
@@ -84,7 +84,8 @@ def display():
   gl.glShadeModel(gl.GL_FLAT)
   imprimir_face(fundo)
   for i in range(len(faces)):
-    imprimir_face(faces[i])
+    if faces[i].visivel:
+        imprimir_face(faces[i])
   texto.afazeres()
   glut.glutSwapBuffers()
 
@@ -92,7 +93,7 @@ def display():
 glut.glutInit()
 glut.glutInitDisplayMode(0)
 glut.glutCreateWindow('Crime e Castigo')
-glut.glutReshapeWindow(720, 540)
+glut.glutReshapeWindow(1080, 810) #720, 540
 glut.glutDisplayFunc(display)
 glut.glutReshapeFunc(resize)
 glut.glutMouseFunc(mouse)

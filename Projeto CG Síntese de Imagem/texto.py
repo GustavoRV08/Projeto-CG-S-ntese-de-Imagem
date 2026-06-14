@@ -2,23 +2,41 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
-def afazeres():
-  
-  tarefas = ["Pegar Casaco",
-        "Pegar Relogio",
-        "Apagar a vela",
-        "Pegar o machado",
-        "Sair de Casa"
+tarefas = [
+      "Já está tudo pronto, agota é só não olhar para trás",
+      "Essa será minha última conversa com aquela agiota",
+      "Ouve um incendio no centro recentemente, foi uma tragédia",
+      "Eu odeio pessoas que se atrasam, elas não se importam com o tempo de vida dos outros",
+      "Tive um resfriado muito forte semana passada, não quero ter outro"
   ]
+
+def afazeres():
+  global tarefas
   
   y = 0.9
 
-  for tarefa in tarefas:
-        glColor3f(1, 1, 1)
-        glRasterPos2f(-0.93, y)
+  glColor3f(1, 1, 1)
+  glRasterPos2f(-0.93, y)
+  
+  if len(tarefas) > 0:
+    for char in tarefas[-1]:
+          glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, ord(char))
+  else:
+    for char in "SEJA NAPOLEÃO!":
+          glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, ord(char))
+    
 
-        for char in tarefa:
-                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ord(char))
 
-        y -= 0.08
+def proxima_tarefa():
+  global tarefa_atual
+  tarefa_atual += 1
+  if tarefa_atual >= len(tarefas):
+    tarefa_atual = 0
 
+tarefas = [
+      "Já está tudo pronto, agota é só não olhar para trás",
+      "Essa será minha última conversa com aquela agiota",
+      "Ouve um incendio no centro recentemente, foi uma tragédia",
+      "Pessoas que se atrasam não se importam com o tempo de vida dos outros",
+      "Tive um resfriado muito forte semana passada, não quero ter outro"
+  ]

@@ -47,55 +47,7 @@ else:
          0.97, -0.72,
          0.49, -0.72,
          r"porta_trancada(vela_cadeira).jpg"))
-#Relógios:
-match random.randrange(0, 3):
-    case 0:
-        faces.append(Face(-0.52, -0.08,
-            -0.32, -0.08, 
-            -0.32, -0.34, 
-            -0.52, -0.34, 
-            r"relogio.jpg"))
-    case 1:
-        faces.append(Face(-0.27, -0.70,
-            -0.07, -0.70, 
-            -0.07, -0.95, 
-            -0.27, -0.95, 
-            r"relogio2.jpg"))  
-    case 2:
-        faces.append(Face(-0.14, 0.27,
-            0.07, 0.27, 
-            0.07, 0, 
-            -0.14, 0, 
-            r"relogio3.jpg"))
-'''
-faces.append(Face(-0.68, -0.34,
-                -0.48, -0.34, 
-                -0.48, -0.60, 
-                -0.68, -0.60, 
-                r"relógio.jpg"))
-'''
-
-'''
-faces.append(Face(-0.52, -0.08,
-    -0.32, -0.08, 
-    -0.32, -0.34, 
-    -0.52, -0.34, 
-    r"bricks.jpg"))
-'''
-
-'''
-faces.append(Face(-0.14, 0.27,
-    0.07, 0.27, 
-    0.07, 0, 
-    -0.14, 0, 
-    r"bricks.jpg"))
-'''
-
-faces.append(Face(-0.82, 0.94, 
-                -0.53, 0.94, 
-                -0.53, -0.05, 
-                -0.82, -0.05, 
-                r"casaco.jpg"))
+    
 
 #machados:
 match random.randrange(0, 3):
@@ -118,22 +70,6 @@ match random.randrange(0, 3):
             -0.01, -0.89, 
             r"machado3.jpg"))
         
-'''
-faces.append(Face(-0.48, 0.74, 
-    0.04, 0.74, 
-    0.04, 0.41, 
-    -0.48, 0.41, 
-    r"machado.jpg"))
-'''
-
-'''
-faces.append(Face(-1, -0.37, 
-    -0.61, -0.37, 
-    -0.61, -0.87, 
-    -1, -0.87, 
-    r"bricks.jpg"))
-'''
-
 
 #velas
 if numFundo == 0:
@@ -147,12 +83,42 @@ else:
         0.93, -0.80, 
         0.71, -0.80, 
         r"velas(cadeira).jpg"))
-'''
-faces.append(Face(0.2, 0.36, 
-    0.42, 0.36, 
-    0.42, 0, 
-    0.2, 0, r"velas.jpg"))
-'''
+    
+
+#Relógios:
+match random.randrange(0, 3):
+    case 0:
+        faces.append(Face(-0.52, -0.08,
+            -0.32, -0.08, 
+            -0.32, -0.34, 
+            -0.52, -0.34, 
+            r"relogio.jpg"))
+    case 1:
+        faces.append(Face(-0.27, -0.70,
+            -0.07, -0.70, 
+            -0.07, -0.95, 
+            -0.27, -0.95, 
+            r"relogio2.jpg"))  
+    case 2:
+        faces.append(Face(-0.14, 0.27,
+            0.07, 0.27, 
+            0.07, 0, 
+            -0.14, 0, 
+            r"relogio3.jpg"))
+    
+# Casaco
+faces.append(Face(-0.82, 0.94, 
+                -0.53, 0.94, 
+                -0.53, -0.05, 
+                -0.82, -0.05, 
+                r"casaco.jpg"))
+
+
+
+
+
+
+        
 
 
 
