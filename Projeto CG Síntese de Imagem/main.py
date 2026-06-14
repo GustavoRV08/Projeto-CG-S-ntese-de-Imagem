@@ -69,9 +69,8 @@ def mouse(botao, estado, x, y):
       if faces[i].textura != None:
         imprimir_face(faces[i])
     texto.afazeres()
-    print(f"len faces: {len(faces)}")
     if len(faces) == 0:
-        glut.glutLeaveMainLoop()
+        imprimir_face(construtor.final)
     glut.glutSwapBuffers()
 
 
