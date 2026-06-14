@@ -29,13 +29,13 @@ def imprimir_face(face):
   gl.glVertex3f(face.coordX[3], face.coordY[3], 0)
   gl.glEnd()
   gl.glDisable(gl.GL_TEXTURE_2D)
-  
+
 def verificar_clique(face, xMouse, yMouse):
   if ((face.get_menorX()*largura_janela/2)+(largura_janela/2))<xMouse<((face.get_maiorX()*largura_janela/2)+(largura_janela/2)) and altura_janela-((face.get_maiorY()*altura_janela/2)+altura_janela/2) <yMouse< altura_janela-((face.get_menorY()*altura_janela/2)+altura_janela/2):
     return True
   else:
     return False
-    
+
 def ler_textura(nome):
   img = Image.open(nome)
   img = img.transpose(Image.FLIP_TOP_BOTTOM)
@@ -59,15 +59,19 @@ def ler_textura(nome):
 def mouse(botao, estado, x, y):
   if botao == glut.GLUT_LEFT_BUTTON and estado == glut.GLUT_DOWN:
     for i in range(len(faces)):
-      if verificar_clique(faces[i], x, y) and i == len(texto.tarefas)-1:
-        faces[i].visivel = False
-        texto.tarefas.pop()
+      if verificar_clique(faces[i], x, y) and i == len(texto.tarefas) and len(faces):
+        faces.pop(i)
+        if len(texto.tarefas) != 0:
+            texto.tarefas.pop()
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
     imprimir_face(fundo)
     for i in range(len(faces)):
-      if faces[i].visivel:
+      if faces[i].textura != None:
         imprimir_face(faces[i])
     texto.afazeres()
+    print(f"len faces: {len(faces)}")
+    if len(faces) == 0:
+        glut.glutLeaveMainLoop()
     glut.glutSwapBuffers()
 
 
@@ -78,13 +82,13 @@ def resize(largura, altura):
   largura_janela = largura
   gl.glViewport(0, 0, largura, altura)
   gl.glLoadIdentity()
-  
+
 def display():
   gl.glClear(gl.GL_COLOR_BUFFER_BIT)
   gl.glShadeModel(gl.GL_FLAT)
   imprimir_face(fundo)
   for i in range(len(faces)):
-    if faces[i].visivel:
+    if faces[i].textura != None:
         imprimir_face(faces[i])
   texto.afazeres()
   glut.glutSwapBuffers()
