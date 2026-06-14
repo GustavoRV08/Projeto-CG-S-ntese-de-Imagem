@@ -29,8 +29,10 @@ class Face:
 numFundo = random.randrange(0, 2)
 if numFundo == 0:
     fundo = Face(-1, 1, 1, 1, 1, -1, -1, -1, r"fundo1.jpg")
+    final = Face(-1, 1, 1, 1, 1, -1, -1, -1, r"fim(fundo1).jpg")
 else:
     fundo = Face(-1, 1, 1, 1, 1, -1, -1, -1, r"fundo2.jpg")
+    final = Face(-1, 1, 1, 1, 1, -1, -1, -1, r"fim(fundo2).jpg")
 
 porta_aberta = Face(0.49, 0.58,
                     0.97, 0.58,
